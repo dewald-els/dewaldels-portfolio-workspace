@@ -38,7 +38,6 @@ const Progress = () => {
       const value = Math.ceil(scrollPos);
       const total = document.body.clientHeight - window.innerHeight;
       const percentage = Math.round((value / total) * 100);
-      console.log("%", percentage);
       setPercentage(Math.max(5, percentage));
     }
 
@@ -64,14 +63,20 @@ const Progress = () => {
           </section>
         </section>
       )}
-      <progress
-        className={`nes-progress ${progressClass}`}
+      <div
         style={{
-          width: "calc(100% - 8px)",
+          backgroundColor: "var(--background)",
         }}
-        value={percentage}
-        max="100"
-      ></progress>
+      >
+        <progress
+          className={`nes-progress ${progressClass}`}
+          style={{
+            width: "calc(100% - 8px)",
+          }}
+          value={percentage}
+          max="100"
+        ></progress>
+      </div>
     </div>
   );
 };

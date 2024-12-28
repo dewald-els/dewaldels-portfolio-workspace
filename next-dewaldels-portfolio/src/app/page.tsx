@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className="mb-48 max-w-4xl mx-auto px-4">
+      <div className="mb-48 max-w-4xl mx-auto px-8">
         <header
           className="flex flex-col items-center justify-center mb-8 pt-8"
           ref={startSectionRef}

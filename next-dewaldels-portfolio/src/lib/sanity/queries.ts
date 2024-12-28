@@ -8,6 +8,7 @@ export const PROJECTS_QUERY = defineQuery(
     "url": screenshot.asset->url,
     caption
   },
+  links,
   techStack[]->{
   title
   },

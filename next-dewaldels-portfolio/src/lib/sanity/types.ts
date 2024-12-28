@@ -132,6 +132,10 @@ export interface ProjectQueryResult {
   projectTags: {
     title: string;
   }[];
+  links: {
+    link: string;
+    linkText: string;
+  }[];
 }
 
 export type SanityFileAsset = {

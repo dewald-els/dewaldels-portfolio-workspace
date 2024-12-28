@@ -28,7 +28,6 @@ const Navbar = () => {
           setCurrentImage(IMAGES[1]);
         });
 
-        console.log("Scrolling?");
         ticking = true;
       }
     };

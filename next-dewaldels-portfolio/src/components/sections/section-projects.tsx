@@ -1,10 +1,10 @@
 import { queryProjects } from "@/lib/sanity/requests";
-import { Project } from "@/lib/sanity/types";
-import { useEffect, useState } from "react";
+import { ProjectQueryResult } from "@/lib/sanity/types";
+import { useEffect, useMemo, useState } from "react";
 import ProjectList from "./projects/project-list";
 
 const SectionProjects = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<ProjectQueryResult[]>([]);
 
   useEffect(() => {
     const getProjects = async () => {
@@ -15,17 +15,17 @@ const SectionProjects = () => {
     getProjects();
   }, []);
 
-  console.log("projects", projects);
-
   return (
-    <section className="nes-container with-title mb-8">
-      <h3 className="title">Projects</h3>
-      <p>Here are some projects I work on in my spare time.</p>
+    <>
+      <section className="nes-container with-title mb-8">
+        <h3 className="title">Projects</h3>
+        <p>Here are some projects I work on in my spare time.</p>
+      </section>
 
       <div>
         <ProjectList projects={projects} />
       </div>
-    </section>
+    </>
   );
 };
 
