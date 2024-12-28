@@ -1,7 +1,9 @@
 "use client";
 
+import Navbar from "@/components/navbar/navbar";
 import Progress from "@/components/progress/progress";
 import SectionContact from "@/components/sections/section-contact";
+import SectionProjects from "@/components/sections/section-projects";
 import "nes.css/css/nes.min.css";
 import { useRef } from "react";
 
@@ -37,7 +39,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="mb-48 max-w-4xl mx-auto">
+      <Navbar />
+      <div className="mb-48 max-w-4xl mx-auto px-4">
         <header
           className="flex flex-col items-center justify-center mb-8 pt-8"
           ref={startSectionRef}
@@ -81,10 +84,7 @@ export default function Home() {
           </div>
 
           <div ref={projectsSectionRef} className="pt-8">
-            <section className="nes-container with-title mb-8">
-              <h3 className="title">Projects</h3>
-              <button className="nes-btn is-success">Projects! Wow</button>
-            </section>
+            <SectionProjects />
           </div>
 
           <div ref={contactSectionRef} className="pt-8">

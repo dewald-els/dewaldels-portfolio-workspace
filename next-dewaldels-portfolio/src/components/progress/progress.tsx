@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const getProgressClass = (percentage: number) => {
   if (percentage >= 98) {
@@ -54,7 +54,7 @@ const Progress = () => {
       {percentage >= 100 && (
         <section className="message-list">
           <section className="message -left">
-            <i className="nes-icon trophy is-large top-6"></i>
+            <i className="nes-icon trophy is-large top-6 z-40"></i>
             <div className="nes-balloon from-left">
               <p>
                 <span className="nes-text is-success font-bold">Wow!</span> You
