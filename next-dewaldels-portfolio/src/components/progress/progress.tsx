@@ -17,23 +17,35 @@ const getProgressClass = (percentage: number) => {
 const Progress = () => {
   const [percentage, setPercentage] = useState(0);
 
-  const handleScroll = useCallback(() => {
-    console.log("scollY", Math.ceil(window.scrollY));
-    console.log("value", document.body.clientHeight - window.innerHeight);
-    const value = Math.ceil(window.scrollY);
-    const total = document.body.clientHeight - window.innerHeight;
-    const percentage = (value / total) * 100;
-    console.log("%", percentage);
-    setPercentage(Math.max(5, percentage));
-  }, []);
-
   useEffect(() => {
+    let lastKnownScrollPosition = 0;
+    let ticking = false;
+
+    const handleScroll = () => {
+      lastKnownScrollPosition = window.scrollY;
+
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          calculateScrollPercentage(lastKnownScrollPosition);
+          ticking = false;
+        });
+
+        ticking = true;
+      }
+    };
+
+    function calculateScrollPercentage(scrollPos: number) {
+      const value = Math.ceil(scrollPos);
+      const total = document.body.clientHeight - window.innerHeight;
+      const percentage = Math.round((value / total) * 100);
+      console.log("%", percentage);
+      setPercentage(Math.max(5, percentage));
+    }
+
     document.addEventListener("scroll", handleScroll);
 
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll]);
+    return () => document.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const progressClass = getProgressClass(percentage);
 
