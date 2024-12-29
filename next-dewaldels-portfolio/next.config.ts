@@ -8,6 +8,17 @@ const nextConfig: NextConfig = {
       hmrRefreshes: true,
     },
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        port: "",
+        pathname: "/images/**",
+        search: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

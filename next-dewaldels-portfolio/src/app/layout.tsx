@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Press_Start_2P } from "next/font/google";
 import "nes.css/css/nes.min.css";
 import "./globals.css";
-import ThemeProvider from "@/lib/context/theme-context";
 
 const pressStart = Press_Start_2P({
   variable: "--font-press-start",
@@ -24,6 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.jpg" sizes="any" />
+      </head>
       <body className={`${pressStart.variable}`}>{children}</body>
     </html>
   );

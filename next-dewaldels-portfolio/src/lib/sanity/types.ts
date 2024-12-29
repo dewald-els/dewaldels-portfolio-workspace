@@ -141,6 +141,7 @@ export interface ProjectQueryResult {
   techStack: {
     title: string;
   }[];
+  shortDescription: string;
 }
 
 export type SanityFileAsset = {

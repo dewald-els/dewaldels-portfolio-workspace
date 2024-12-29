@@ -56,8 +56,10 @@ const Progress = () => {
             <i className="nes-icon trophy is-large top-6 z-40"></i>
             <div className="nes-balloon from-left">
               <p>
-                <span className="nes-text is-success font-bold">Wow!</span> You
-                made it to the bottom!
+                <span className="nes-text is-success font-bold">Wow!</span>
+                <span className="nes-text dark:text-black">
+                  You made it to the bottom!
+                </span>
               </p>
             </div>
           </section>
