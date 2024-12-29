@@ -28,7 +28,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -44,4 +43,8 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.nes-container.is-rounded.with-title > .title {
+  margin-top: -2rem;
 }

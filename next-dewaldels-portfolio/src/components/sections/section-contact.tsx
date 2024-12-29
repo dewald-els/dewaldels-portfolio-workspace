@@ -4,7 +4,7 @@ const SectionContact = () => {
   const { isDark } = useTheme();
   return (
     <section
-      className={`nes-container with-title mb-8 ${isDark ? "is-dark" : ""}`}
+      className={`nes-container is-rounded with-title mb-8 ${isDark ? "is-dark" : ""}`}
     >
       <h3 className="title">Contact me</h3>
 

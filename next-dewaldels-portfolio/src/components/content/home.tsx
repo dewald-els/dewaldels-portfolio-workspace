@@ -40,7 +40,6 @@ const HomeContent = () => {
       <Navbar />
       <div className="mb-48 max-w-4xl mx-auto px-8">
         <SectionHeader onScrollToSectionClick={handleGoToSectionClick} />
-
         <main>
           <div ref={aboutSectionRef} className="pt-8">
             <SectionAbout />

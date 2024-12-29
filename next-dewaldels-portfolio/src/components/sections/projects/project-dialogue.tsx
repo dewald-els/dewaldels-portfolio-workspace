@@ -32,18 +32,18 @@ const ProjectDialogue = (props: ProjectDiaogueProps) => {
                 backgroundColor: "var(--background)",
               }}
             >
-              <div className="flex justify-end mb-4">
-                <button className="nes-btn is-error" onClick={onDismiss}>
-                  x
-                </button>
-              </div>
-              <div className="mb-6">
+              <div className="flex justify-between items-center gap-4 mb-6">
                 <h1 className="nes-text text-lg font-bold is-primary">
                   {project.title}
                 </h1>
-                <p>Project info here</p>
+                <div className="flex justify-end mb-4">
+                  <button className="nes-btn is-error" onClick={onDismiss}>
+                    x
+                  </button>
+                </div>
               </div>
 
+              <p>Project info here</p>
               <ProjectDialogueDivider />
 
               <div className="mb-6">

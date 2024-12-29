@@ -18,7 +18,7 @@ const ProjectLinks = (props: ProjectLinksProps) => {
             href={link.link}
             target="_blank"
             key={`${projectId}_${link.linkText}`}
-            className="nes-btn"
+            className="nes-btn is-success"
           >
             {link.linkText}
           </a>
