@@ -1,6 +1,8 @@
 import { ProjectQueryResult } from "@/lib/sanity/types";
 import { useEffect, useState } from "react";
 import ProjectLinks from "./project-links";
+import ProjectTechStack from "./project-techstack";
+import ProjectDialogueDivider from "./project-dialogue-divider";
 
 interface ProjectDiaogueProps {
   onDismiss: () => void;
@@ -25,7 +27,7 @@ const ProjectDialogue = (props: ProjectDiaogueProps) => {
           <div className="bg-slate-800 opacity-80 fixed top-0 left-0 w-full h-dvh flex justify-center items-center z-[99]"></div>
           <div className="bg-transparent fixed top-0 left-0 w-full h-dvh flex justify-center items-center z-[99]">
             <div
-              className="nes-container is-round opacity-100 z-[999] relative"
+              className="nes-container is-rounded opacity-100 z-[999] relative !mx-4"
               style={{
                 backgroundColor: "var(--background)",
               }}
@@ -36,9 +38,22 @@ const ProjectDialogue = (props: ProjectDiaogueProps) => {
                 </button>
               </div>
               <div className="mb-6">
-                <h1>{project.title}</h1>
+                <h1 className="nes-text text-lg font-bold is-primary">
+                  {project.title}
+                </h1>
                 <p>Project info here</p>
               </div>
+
+              <ProjectDialogueDivider />
+
+              <div className="mb-6">
+                <ProjectTechStack
+                  techStack={project.techStack}
+                  projectId={project.id}
+                />
+              </div>
+
+              <ProjectDialogueDivider />
 
               <div className="mb-6">
                 <ProjectLinks

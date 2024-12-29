@@ -125,6 +125,8 @@ export type Project = {
 export interface ProjectQueryResult {
   id: string;
   title: string;
+  thumbnailUrl: string;
+  body: string;
   image: {
     caption: string;
     url: string;
@@ -135,6 +137,9 @@ export interface ProjectQueryResult {
   links: {
     link: string;
     linkText: string;
+  }[];
+  techStack: {
+    title: string;
   }[];
 }
 

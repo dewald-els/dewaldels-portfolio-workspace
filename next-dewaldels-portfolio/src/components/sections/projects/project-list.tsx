@@ -20,10 +20,10 @@ const ProjectList = (props: ProjectListProps) => {
 
   return (
     <>
-      <ul className="grid md:grid-cols-2 gap-4">
+      <ul className="grid md:grid-cols-2 gap-6">
         {projects.map((project) => (
-          <li key={project.id} className="nes-container p-0">
-            <div className="mb-6">
+          <li key={project.id} className="nes-container is-rounded !p-0 !m-0">
+            <div className="mb-2 border-b-4 border-black">
               {/* <Image
               unoptimized
               src={project.image[0].url}
@@ -32,7 +32,7 @@ const ProjectList = (props: ProjectListProps) => {
               height={200}
             /> */}
               <img
-                src={project.image[0].url}
+                src={project.thumbnailUrl}
                 className="w-full object-cover h-60"
                 alt={project.title}
               />
@@ -48,7 +48,7 @@ const ProjectList = (props: ProjectListProps) => {
                   className="nes-btn is-primary"
                   onClick={() => handleProjectClick(project)}
                 >
-                  More info
+                  ?
                 </button>
               </div>
             </div>
