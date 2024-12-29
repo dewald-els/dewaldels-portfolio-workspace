@@ -1,6 +1,11 @@
+import { useTheme } from "@/lib/context/theme-context";
+
 const SectionContact = () => {
+  const { isDark } = useTheme();
   return (
-    <section className="nes-container with-title mb-8">
+    <section
+      className={`nes-container with-title mb-8 ${isDark ? "is-dark" : ""}`}
+    >
       <h3 className="title">Contact me</h3>
 
       <div className="flex items-start gap-4 mb-8">

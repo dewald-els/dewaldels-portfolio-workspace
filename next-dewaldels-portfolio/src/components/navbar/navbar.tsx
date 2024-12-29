@@ -47,7 +47,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="flex items-center gap-4 border-b-4 border-gray-200 p-4 sticky top-0 z-50"
+      className="flex items-center gap-4 border-b-4 border-gray-200 dark:border-black p-4 sticky top-0 z-50"
       style={{
         backgroundColor: "var(--background)",
       }}

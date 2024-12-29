@@ -1,9 +1,11 @@
 import { queryProjects } from "@/lib/sanity/requests";
 import { ProjectQueryResult } from "@/lib/sanity/types";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectList from "./projects/project-list";
+import { useTheme } from "@/lib/context/theme-context";
 
 const SectionProjects = () => {
+  const { isDark } = useTheme();
   const [projects, setProjects] = useState<ProjectQueryResult[]>([]);
 
   useEffect(() => {
@@ -17,12 +19,14 @@ const SectionProjects = () => {
 
   return (
     <>
-      <section className="nes-container with-title mb-8">
+      <section
+        className={`nes-container with-title ${isDark ? " is-dark" : ""} mb-8`}
+      >
         <h3 className="title">Projects</h3>
         <p>Here are some projects I work on in my spare time.</p>
       </section>
 
-      <div>
+      <div className="pt-8">
         <ProjectList projects={projects} />
       </div>
     </>
