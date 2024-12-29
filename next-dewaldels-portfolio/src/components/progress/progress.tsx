@@ -22,9 +22,9 @@ const Progress = () => {
     let ticking = false;
 
     const handleScroll = () => {
-      lastKnownScrollPosition = window.scrollY;
+      lastKnownScrollPosition = window?.scrollY ?? 0;
 
-      if (!ticking) {
+      if (window && !ticking) {
         window.requestAnimationFrame(() => {
           calculateScrollPercentage(lastKnownScrollPosition);
           ticking = false;
@@ -36,7 +36,7 @@ const Progress = () => {
 
     function calculateScrollPercentage(scrollPos: number) {
       const value = Math.ceil(scrollPos);
-      const total = document.body.clientHeight - window.innerHeight;
+      const total = document.body.clientHeight - window?.innerHeight;
       const percentage = Math.round((value / total) * 100);
       setPercentage(Math.max(5, percentage));
     }

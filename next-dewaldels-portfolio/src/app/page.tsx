@@ -3,22 +3,23 @@
 import Navbar from "@/components/navbar/navbar";
 import Progress from "@/components/progress/progress";
 import SectionContact from "@/components/sections/section-contact";
+import SectionHeader from "@/components/sections/section-header";
 import SectionProjects from "@/components/sections/section-projects";
+import { PageSection } from "@/types";
 import "nes.css/css/nes.min.css";
-import { useRef } from "react";
-
-enum PageSection {
-  Start,
-  About,
-  Projects,
-  Contact,
-}
+import { useEffect, useRef } from "react";
 
 export default function Home() {
   const contactSectionRef = useRef<HTMLDivElement>(null);
   const aboutSectionRef = useRef<HTMLDivElement>(null);
   const projectsSectionRef = useRef<HTMLDivElement>(null);
-  const startSectionRef = useRef<HTMLDivElement>(null);
+  const startSectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (document) {
+      startSectionRef.current = document.body;
+    }
+  }, []);
 
   const handleGoToSectionClick = (section: PageSection) => {
     switch (section) {
@@ -41,36 +42,7 @@ export default function Home() {
     <>
       <Navbar />
       <div className="mb-48 max-w-4xl mx-auto px-8">
-        <header
-          className="flex flex-col items-center justify-center mb-8 pt-8"
-          ref={startSectionRef}
-        >
-          <div className="flex flex-col gap-4 mb-8">
-            <h2 className="text-3xl nes-text is-primary">Portfolio of</h2>
-            <h1 className="text-5xl font-bold">Dewald Els</h1>
-          </div>
-
-          <div className="inline-flex flex-col gap-4">
-            <button
-              className="nes-btn w-60"
-              onClick={() => handleGoToSectionClick(PageSection.About)}
-            >
-              About
-            </button>
-            <button
-              className="nes-btn is-primary w-60"
-              onClick={() => handleGoToSectionClick(PageSection.Projects)}
-            >
-              Projects
-            </button>
-            <button
-              className="nes-btn is-warning w-60"
-              onClick={() => handleGoToSectionClick(PageSection.Contact)}
-            >
-              Contact
-            </button>
-          </div>
-        </header>
+        <SectionHeader onScrollToSectionClick={handleGoToSectionClick} />
 
         <main>
           <div ref={aboutSectionRef} className="pt-8">
@@ -91,6 +63,14 @@ export default function Home() {
             <SectionContact />
           </div>
         </main>
+      </div>
+      <div className="fixed right-4 bottom-24 z-50">
+        <button
+          className="nes-btn is-error scroll-btn flex justify-center items-center"
+          onClick={() => handleGoToSectionClick(PageSection.Start)}
+        >
+          <span>&#94;</span>
+        </button>
       </div>
       <Progress />
     </>

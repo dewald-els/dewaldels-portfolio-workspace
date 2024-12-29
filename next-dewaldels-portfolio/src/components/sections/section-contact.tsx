@@ -44,7 +44,7 @@ const SectionContact = () => {
           <a
             target="_blank"
             className="nes-text is-primary underline"
-            href="https://linkedin.com/dewald-els"
+            href="https://www.linkedin.com/in/dewald-els/"
           >
             @dewald-els
           </a>
@@ -60,7 +60,7 @@ const SectionContact = () => {
           <a
             target="_blank"
             className="nes-text is-primary underline"
-            href="https://itch.io/mr_betamax"
+            href="https://mrbetamax.itch.io/"
           >
             @mr_betamax
           </a>

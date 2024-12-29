@@ -19,7 +19,7 @@ const Navbar = () => {
     let ticking = false;
 
     const handleScroll = () => {
-      if (!ticking) {
+      if (window && !ticking) {
         window.requestAnimationFrame(() => {
           ticking = false;
           if (timeoutRef.current) {

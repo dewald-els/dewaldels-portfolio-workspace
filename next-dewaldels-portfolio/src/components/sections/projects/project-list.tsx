@@ -1,5 +1,8 @@
 import { ProjectQueryResult } from "@/lib/sanity/types";
 import Image from "next/image";
+import { useState } from "react";
+import ProjectLinks from "./project-links";
+import ProjectDialogue from "./project-dialogue";
 
 interface ProjectListProps {
   projects: ProjectQueryResult[];
@@ -7,37 +10,58 @@ interface ProjectListProps {
 
 const ProjectList = (props: ProjectListProps) => {
   const { projects } = props;
+  const [dialogueProject, setDialogueProject] = useState<
+    ProjectQueryResult | undefined
+  >();
+
+  const handleProjectClick = (project: ProjectQueryResult) => {
+    setDialogueProject(project);
+  };
+
   return (
-    <ul>
-      {projects.map((project) => (
-        <li key={project.id} className="nes-container  mb-8">
-          <div className="mb-6">
-            <span className="font-bold text-lg nes-text is-primary">
-              {project.title}
-            </span>
-          </div>
-          <div className="mb-6">
-            <Image
+    <>
+      <ul className="grid md:grid-cols-2 gap-4">
+        {projects.map((project) => (
+          <li key={project.id} className="nes-container p-0">
+            <div className="mb-6">
+              {/* <Image
               unoptimized
               src={project.image[0].url}
               alt={project.title || "Project"}
               width={200}
               height={200}
-            />
-          </div>
-          <div className="flex gap-4">
-            {project.links.map((link) => (
-              <button
-                key={`${project.id}_${link.linkText}`}
-                className="nes-btn"
-              >
-                {link.linkText}
-              </button>
-            ))}
-          </div>
-        </li>
-      ))}
-    </ul>
+            /> */}
+              <img
+                src={project.image[0].url}
+                className="w-full object-cover h-60"
+                alt={project.title}
+              />
+            </div>
+            <div className="p-4">
+              <div className="mb-6">
+                <span className="font-bold text-lg nes-text is-primary">
+                  {project.title}
+                </span>
+              </div>
+              <div>
+                <button
+                  className="nes-btn is-primary"
+                  onClick={() => handleProjectClick(project)}
+                >
+                  More info
+                </button>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <ProjectDialogue
+        project={dialogueProject}
+        onDismiss={() => {
+          setDialogueProject(undefined);
+        }}
+      />
+    </>
   );
 };
 
