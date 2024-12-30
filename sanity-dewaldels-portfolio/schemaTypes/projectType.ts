@@ -11,6 +11,11 @@ export const projectType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'shortDescription',
+      title: 'Short description',
+      type: 'string',
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
       options: {source: 'title'},
@@ -21,6 +26,12 @@ export const projectType = defineType({
       type: 'datetime',
       initialValue: () => new Date().toISOString(),
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'thumbnail',
+      title: 'Thumbnail',
+      description: 'A thumbnail will be displayed in the project list. The image must be 396x240',
+      type: 'image',
     }),
     defineField({
       name: 'video',
