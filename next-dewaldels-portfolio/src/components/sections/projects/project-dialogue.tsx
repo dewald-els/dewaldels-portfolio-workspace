@@ -4,6 +4,7 @@ import ProjectLinks from "./project-links";
 import ProjectTechStack from "./project-techstack";
 import ProjectDialogueDivider from "./project-dialogue-divider";
 import ProjectTrimableText from "./project-trimable-text";
+import ProjectDialogueCarousel from "./project-dialogue-carousel/project-dialogue-carousel";
 
 interface ProjectDiaogueProps {
   onDismiss: () => void;
@@ -38,10 +39,14 @@ const ProjectDialogue = (props: ProjectDiaogueProps) => {
               </h3>
               <div className="dialogue-content-wrapper overflow-hidden">
                 <div className="dialogue-content px-6">
-                  <div className="absolute right-0 top-0">
+                  <div className="absolute right-0 top-0 z-[999]">
                     <button className="nes-btn is-error" onClick={onDismiss}>
                       x
                     </button>
+                  </div>
+
+                  <div className="mb-6">
+                    <ProjectDialogueCarousel images={project.image} />
                   </div>
 
                   {project.body && (
