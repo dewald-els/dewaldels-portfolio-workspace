@@ -1,20 +1,19 @@
 import { useState } from "react";
+import { PortableText } from "@portabletext/react";
+import { ProjectQueryResult } from "@/lib/sanity/types";
 
 interface ProjectTrimableTextProps {
   text: string[];
   maxWordCount?: number;
+  body: ProjectQueryResult["body"];
 }
 
 interface CreateDisplayTextInput {
   text: string;
-  trim: boolean;
   maxWordCount: number;
 }
-const createDisplayText = (input: CreateDisplayTextInput) => {
-  const { text, trim, maxWordCount } = input;
-  if (!trim) {
-    return text;
-  }
+const createTrimmedText = (input: CreateDisplayTextInput) => {
+  const { text, maxWordCount } = input;
 
   const words = text.split(" ");
 
@@ -26,7 +25,7 @@ const createDisplayText = (input: CreateDisplayTextInput) => {
 };
 
 const ProjectTrimableText = (props: ProjectTrimableTextProps) => {
-  const { text = [], maxWordCount = 10 } = props;
+  const { text = [], maxWordCount = 10, body } = props;
 
   const [trimText, setTrimText] = useState(true);
 
@@ -37,15 +36,38 @@ const ProjectTrimableText = (props: ProjectTrimableTextProps) => {
   const sourceText = text.join("\n");
   const sourceTextWordCount = sourceText.split(" ").length;
 
-  const displayText = createDisplayText({
+  const trimmedText = createTrimmedText({
     text: text.join("\n"),
-    trim: trimText,
     maxWordCount,
   });
 
+  const components = {
+    types: {
+      code: (props) => {
+        const { language, code } = props.value;
+        return (
+          <pre data-language={language}>
+            <code>{code}</code>
+          </pre>
+        );
+      },
+    },
+  };
+
   return (
     <div className="flex flex-col items-center">
-      <div>{displayText}</div>
+      {trimText && <div>{trimmedText}</div>}
+      {!trimText && (
+        <div>
+          {body?.map((child) => (
+            <PortableText
+              key={child._key}
+              value={child}
+              components={components}
+            />
+          ))}
+        </div>
+      )}
       {sourceTextWordCount > maxWordCount && (
         <button className="nes-btn mt-4" onClick={handleToggleTrimClick}>
           <span className="nes-text text-sm">

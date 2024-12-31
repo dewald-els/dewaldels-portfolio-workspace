@@ -33,38 +33,43 @@ const ProjectDialogue = (props: ProjectDiaogueProps) => {
                 backgroundColor: "var(--background)",
               }}
             >
-              <h3 className="title nes-container is-rounded font-bold max-w-60 nes-text is-primary !ml-6">
+              <h3 className="title nes-container is-rounded font-bold max-w-64 md:max-w-72 nes-text is-primary !ml-6">
                 {project.title}
               </h3>
-              <div className="dialogue-content px-6">
-                <div className="absolute right-0 top-0">
-                  <button className="nes-btn is-error" onClick={onDismiss}>
-                    x
-                  </button>
-                </div>
-
-                {project.body && (
-                  <div className="mb-6">
-                    <ProjectTrimableText text={[project.bodyText]} />
+              <div className="dialogue-content-wrapper overflow-hidden">
+                <div className="dialogue-content px-6">
+                  <div className="absolute right-0 top-0">
+                    <button className="nes-btn is-error" onClick={onDismiss}>
+                      x
+                    </button>
                   </div>
-                )}
 
-                <ProjectDialogueDivider />
+                  {project.body && (
+                    <div className="mb-6">
+                      <ProjectTrimableText
+                        text={[project.bodyText]}
+                        body={project.body}
+                      />
+                    </div>
+                  )}
 
-                <div className="mb-6">
-                  <ProjectTechStack
-                    techStack={project.techStack}
-                    projectId={project.id}
-                  />
-                </div>
+                  <ProjectDialogueDivider />
 
-                <ProjectDialogueDivider />
+                  <div className="mb-6">
+                    <ProjectTechStack
+                      techStack={project.techStack}
+                      projectId={project.id}
+                    />
+                  </div>
 
-                <div className="mb-6">
-                  <ProjectLinks
-                    projectLinks={project.links}
-                    projectId={project.id}
-                  />
+                  <ProjectDialogueDivider />
+
+                  <div className="mb-6">
+                    <ProjectLinks
+                      projectLinks={project.links}
+                      projectId={project.id}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

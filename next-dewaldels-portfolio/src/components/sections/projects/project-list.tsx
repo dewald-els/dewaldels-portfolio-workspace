@@ -29,11 +29,7 @@ const ProjectList = (props: ProjectListProps) => {
           >
             <div className="header">
               <div className="border-b-4 border-black  relative">
-                <img
-                  src={project.thumbnailUrl}
-                  alt={project.title}
-                  className="h-24 md:h-60"
-                />
+                <img src={project.thumbnailUrl} alt={project.title} />
               </div>
               <div className="p-6">
                 <span className="font-bold text-lg nes-text is-primary block">
