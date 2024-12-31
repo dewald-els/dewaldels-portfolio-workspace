@@ -5,7 +5,8 @@ export const PROJECTS_QUERY = defineQuery(
   "id": _id,
   title,
   shortDescription,
-  "body": pt::text(body),
+  "bodyText": pt::text(body),
+  body,
   "thumbnailUrl": thumbnail.asset->url,
   image[]->{
     "url": screenshot.asset->url,
@@ -24,7 +25,8 @@ export const ABOUT_QUERY = defineQuery(
   `*[_type == "about"][0...1]{
   "id": _id,
   title,
-  "body": pt::text(body),
+  body,
+  "bodyText": pt::text(body),
    skills[]->{
    title
  }}`

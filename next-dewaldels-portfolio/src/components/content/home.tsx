@@ -47,6 +47,7 @@ const HomeContent = () => {
       className="pb-48"
       style={{
         background: `url('${bgUrl}') top left repeat`,
+        backgroundAttachment: "fixed",
       }}
     >
       <Navbar />

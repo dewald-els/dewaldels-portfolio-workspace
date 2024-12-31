@@ -28,7 +28,13 @@ const SectionAbout = () => {
       {about && (
         <div className="mt-6">
           <div className="mb-6">
-            <p>{about.body}</p>
+            {about.body?.map((bodyItem) => {
+              return bodyItem.children?.map((bodyItemChild) => (
+                <p className="nes-text mb-4" key={bodyItemChild._key}>
+                  {bodyItemChild.text}
+                </p>
+              ));
+            })}
           </div>
           <ProjectDialogueDivider />
 

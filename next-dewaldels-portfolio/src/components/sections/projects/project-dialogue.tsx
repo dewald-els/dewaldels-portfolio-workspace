@@ -28,15 +28,15 @@ const ProjectDialogue = (props: ProjectDiaogueProps) => {
           <div className="bg-slate-800 opacity-80 fixed top-0 left-0 w-full h-dvh flex justify-center items-center z-[99]"></div>
           <div className="bg-transparent fixed top-0 left-0 w-full h-dvh flex justify-center items-center z-[99]">
             <div
-              className="nes-container with-title is-rounded opacity-100 z-[999] relative !mx-4 dialogue"
+              className="nes-container with-title is-rounded opacity-100 z-[999] relative !mx-4 dialogue !px-0"
               style={{
                 backgroundColor: "var(--background)",
               }}
             >
-              <h3 className="title nes-container is-rounded font-bold max-w-60 nes-text is-primary">
+              <h3 className="title nes-container is-rounded font-bold max-w-60 nes-text is-primary !ml-6">
                 {project.title}
               </h3>
-              <div className="dialogue-content">
+              <div className="dialogue-content px-6">
                 <div className="absolute right-0 top-0">
                   <button className="nes-btn is-error" onClick={onDismiss}>
                     x
@@ -45,7 +45,7 @@ const ProjectDialogue = (props: ProjectDiaogueProps) => {
 
                 {project.body && (
                   <div className="mb-6">
-                    <ProjectTrimableText text={[project.body]} />
+                    <ProjectTrimableText text={[project.bodyText]} />
                   </div>
                 )}
 

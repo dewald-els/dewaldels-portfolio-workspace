@@ -122,10 +122,13 @@ export type Project = {
   }>;
 };
 
+export type SanityBody = Project["body"];
+
 export interface AboutQueryResult {
   id: string;
   title: string;
-  body: string;
+  body: SanityBody;
+  bodyText: string;
   skills: {
     title: string;
   }[];
@@ -135,7 +138,8 @@ export interface ProjectQueryResult {
   id: string;
   title: string;
   thumbnailUrl: string;
-  body: string;
+  body: SanityBody;
+  bodyText: string;
   image: {
     caption: string;
     url: string;
