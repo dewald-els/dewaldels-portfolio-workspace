@@ -122,6 +122,15 @@ export type Project = {
   }>;
 };
 
+export interface AboutQueryResult {
+  id: string;
+  title: string;
+  body: string;
+  skills: {
+    title: string;
+  }[];
+}
+
 export interface ProjectQueryResult {
   id: string;
   title: string;

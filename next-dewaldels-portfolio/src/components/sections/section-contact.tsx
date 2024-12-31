@@ -4,9 +4,11 @@ const SectionContact = () => {
   const { isDark } = useTheme();
   return (
     <section
-      className={`nes-container is-rounded with-title mb-8 ${isDark ? "is-dark" : ""}`}
+      className={`nes-container is-rounded with-title ${isDark ? "is-dark" : ""}`}
     >
-      <h3 className="title">Contact me</h3>
+      <h3 className="title nes-text is-warning nes-container is-rounded">
+        Contact me
+      </h3>
 
       <div className="flex items-start gap-4 mb-8">
         <div>

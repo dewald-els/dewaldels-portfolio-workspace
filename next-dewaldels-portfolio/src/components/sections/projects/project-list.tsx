@@ -1,7 +1,6 @@
 import { ProjectQueryResult } from "@/lib/sanity/types";
 import Image from "next/image";
 import { useState } from "react";
-import ProjectLinks from "./project-links";
 import ProjectDialogue from "./project-dialogue";
 import { useTheme } from "@/lib/context/theme-context";
 
@@ -22,18 +21,18 @@ const ProjectList = (props: ProjectListProps) => {
 
   return (
     <>
-      <ul className="grid md:grid-cols-2 gap-6">
+      <ul className="grid sm:grid-cols-2 gap-6">
         {projects.map((project) => (
           <li
             key={project.id}
             className={`nes-container flex flex-col is-rounded !m-0 !p-2 ${isDark ? "is-dark" : ""}`}
           >
             <div className="header">
-              <div className="border-b-4 border-black h-24 md:h-60 relative">
-                <Image
+              <div className="border-b-4 border-black  relative">
+                <img
                   src={project.thumbnailUrl}
                   alt={project.title}
-                  layout="fill"
+                  className="h-24 md:h-60"
                 />
               </div>
               <div className="p-6">
@@ -59,7 +58,7 @@ const ProjectList = (props: ProjectListProps) => {
                 ?
               </button>
               <div className="nes-badge">
-                <span className="is-warning">
+                <span className="is-warning text-xs">
                   {project.projectTags[0].title}
                 </span>
               </div>

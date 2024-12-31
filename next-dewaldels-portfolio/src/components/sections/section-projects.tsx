@@ -22,7 +22,9 @@ const SectionProjects = () => {
       <section
         className={`nes-container is-rounded with-title ${isDark ? " is-dark" : ""} mb-8`}
       >
-        <h3 className="title">Projects</h3>
+        <h3 className="title nes-text is-primary nes-container is-rounded">
+          Projects
+        </h3>
         <p>Here are some projects I work on in my spare time.</p>
       </section>
 

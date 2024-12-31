@@ -1,6 +1,6 @@
 import { client } from "./client";
-import { PROJECTS_QUERY } from "./queries";
-import { ProjectQueryResult } from "./types";
+import { ABOUT_QUERY, PROJECTS_QUERY } from "./queries";
+import { AboutQueryResult, ProjectQueryResult } from "./types";
 
 const queryProjects = async () => {
   try {
@@ -12,4 +12,14 @@ const queryProjects = async () => {
   }
 };
 
-export { queryProjects };
+const queryAbout = async () => {
+  try {
+    const about = await client.fetch<AboutQueryResult[]>(ABOUT_QUERY);
+    return about;
+  } catch (error) {
+    console.log("error: ", error);
+    return [];
+  }
+};
+
+export { queryProjects, queryAbout };

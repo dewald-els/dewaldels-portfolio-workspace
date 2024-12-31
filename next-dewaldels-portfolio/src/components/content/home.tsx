@@ -6,12 +6,16 @@ import SectionContact from "../sections/section-contact";
 import SectionHeader from "../sections/section-header";
 import SectionProjects from "../sections/section-projects";
 import SectionAbout from "../sections/section-about";
+import { useTheme } from "@/lib/context/theme-context";
+import light_diamond_pattern from "../../assets/diamond_shape.png";
+import dark_diamond_pattern from "../../assets/diamond_shape-dark.png";
 
 const HomeContent = () => {
   const contactSectionRef = useRef<HTMLDivElement>(null);
   const aboutSectionRef = useRef<HTMLDivElement>(null);
   const projectsSectionRef = useRef<HTMLDivElement>(null);
   const startSectionRef = useRef<HTMLElement>(null);
+  const { isDark } = useTheme();
 
   useEffect(() => {
     if (document) {
@@ -35,10 +39,18 @@ const HomeContent = () => {
         break;
     }
   };
+
+  const bgUrl = isDark ? dark_diamond_pattern.src : light_diamond_pattern.src;
+
   return (
-    <>
+    <div
+      className="pb-48"
+      style={{
+        background: `url('${bgUrl}') top left repeat`,
+      }}
+    >
       <Navbar />
-      <div className="mb-48 max-w-4xl mx-auto px-8">
+      <div className="max-w-4xl mx-auto px-8">
         <SectionHeader onScrollToSectionClick={handleGoToSectionClick} />
         <main>
           <div ref={aboutSectionRef} className="pt-8">
@@ -63,7 +75,7 @@ const HomeContent = () => {
         </button>
       </div>
       <Progress />
-    </>
+    </div>
   );
 };
 

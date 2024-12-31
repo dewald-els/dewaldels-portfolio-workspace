@@ -5,7 +5,16 @@
 :root {
   --background: #ffffff;
   --foreground: #212529;
+
+  --error: red;
+  --primary: #2d93dd;
+  --purple: #7b53ad;
+  --warning: #e6da29;
+  --success: #28c641;
+  --white: white;
+  --black: #1b1c33;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -47,4 +56,27 @@ a {
 
 .nes-container.is-rounded.with-title > .title {
   margin-top: -2rem;
+}
+
+.nes-container {
+  background-color: var(--background);
+}
+
+
+@media screen and (max-width: 480px) {
+  
+  .nes-container.dialogue {
+    background-color: var(--background);
+    position: absolute;
+    bottom: 0;
+    max-height: 100vh;
+    top: 48px;
+    margin-left: 4px !important;
+    margin-right: 4px !important;
+  }
+  .dialogue-content {
+    overflow-y: scroll;
+    max-height: calc(100vh - 128px);
+    padding-bottom: 2rem;
+  }
 }
