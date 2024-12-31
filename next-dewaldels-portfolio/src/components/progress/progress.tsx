@@ -51,7 +51,7 @@ const Progress = () => {
   return (
     <div className="fixed bottom-0 w-full left-0 right-0 p-4">
       {percentage >= 100 && (
-        <section className="message-list">
+        <section className="message-list finish-bubble">
           <section className="message -left">
             <i className="nes-icon trophy is-large top-6 z-40"></i>
             <div className="nes-balloon from-left">

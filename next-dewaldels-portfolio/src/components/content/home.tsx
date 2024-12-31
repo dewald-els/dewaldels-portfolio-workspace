@@ -72,7 +72,7 @@ const HomeContent = () => {
           className="nes-btn is-error scroll-btn flex justify-center items-center"
           onClick={() => handleGoToSectionClick(PageSection.Start)}
         >
-          <span>&#94;</span>
+          <span className="rotate-90">&lt;</span>
         </button>
       </div>
       <Progress />

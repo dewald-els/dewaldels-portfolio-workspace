@@ -65,6 +65,11 @@ body {
   }
 }
 
+.finish-bubble {
+  animation: slideInUp;
+  animation-duration: 200ms;
+}
+
 .nes-container.dialogue {
   animation: slideInUp;
   animation-duration: 200ms;
