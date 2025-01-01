@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { PortableText } from "@portabletext/react";
+import { PortableText, PortableTextReactComponents } from "@portabletext/react";
 import { ProjectQueryResult } from "@/lib/sanity/types";
 
 interface ProjectTrimableTextProps {
@@ -41,7 +41,7 @@ const ProjectTrimableText = (props: ProjectTrimableTextProps) => {
     maxWordCount,
   });
 
-  const components = {
+  const components: Partial<PortableTextReactComponents> = {
     types: {
       code: (props) => {
         const { language, code } = props.value;
@@ -58,7 +58,7 @@ const ProjectTrimableText = (props: ProjectTrimableTextProps) => {
     <div className="flex flex-col items-center">
       {trimText && <div>{trimmedText}</div>}
       {!trimText && (
-        <div>
+        <div className="portable-text">
           {body?.map((child) => (
             <PortableText
               key={child._key}

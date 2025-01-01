@@ -39,7 +39,7 @@ const SectionAbout = () => {
           <ProjectDialogueDivider />
 
           <div className="mt-2">
-            <span className="nes-text is-primary font-bold mb-6 block">
+            <span className="nes-text is-success font-bold mb-6 block">
               My Skills
             </span>
 
@@ -56,7 +56,7 @@ const SectionAbout = () => {
               ))}
             </div>
 
-            <p className="text-slate-600 dark:text-slate-400 text-sm">
+            <p className="text-slate-500 dark:text-slate-400 text-sm">
               <b>Note:</b> This is not an exhaustive list but summarises the
               technologies with which I am most familiar.
             </p>

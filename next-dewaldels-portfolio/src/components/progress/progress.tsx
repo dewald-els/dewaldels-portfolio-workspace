@@ -71,7 +71,8 @@ const Progress = () => {
         }}
       >
         <progress
-          className={`nes-progress ${progressClass}`}
+          data-animation="on"
+          className={`nes-progress ${progressClass} h-6`}
           style={{
             width: "calc(100% - 8px)",
           }}
