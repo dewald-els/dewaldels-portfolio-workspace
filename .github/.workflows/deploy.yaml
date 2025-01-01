@@ -1,0 +1,39 @@
+name: build-and-deploy
+
+on: [push]
+
+jobs:
+  build-and-deploy:
+    name: Build and deploy portfolio
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@4
+        with:
+          fetch-depth: 0
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "npm"
+
+      - name: npm install, npm build
+        run: |
+          cd next-dewaldels-portfolio
+          npm run ci
+          npm run build --if-exists
+
+      - name: Setup .env and secrets
+        run: |
+          cd next-dewaldels-portfolio
+          touch .env
+          echo NEXT_PUBLIC_SANITY_PROJECT_ID=${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }} >> .env
+          echo NEXT_PUBLIC_SANITY_DATASET=production >> .env
+          cat .env
+
+      - name: "Deploy to Azure"
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: "portfolio-dewaldels"
+          publish-profile: ${{ secrests.AZURE_PUBLISH_PROFILE }}
+          package: "./next-dewaldels-portfolio"
